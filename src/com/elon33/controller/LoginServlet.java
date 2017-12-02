@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 			//用户合法，跳转到界面
 			HttpSession session = request.getSession(); 
 			session.setAttribute("username", username);
-			
+			session.setAttribute("currentPath", HdfsDAO.getHdfs()+"/"+username);
 			JobConf conf = HdfsDAO.config();
 	        HdfsDAO hdfs = new HdfsDAO(conf);
 			FileStatus[] list = hdfs.ls("/"+username);

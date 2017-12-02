@@ -1,8 +1,9 @@
  <%@ include file="head.jsp"%>
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-    
-    
+<head>
+  <title>HDFS网盘系统</title>
+</head>  
 <body style="text-align:center;margin-bottom:100px;">
 	<div class="navbar" >
 	   <div class="navbar-inner">

@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -20,8 +22,15 @@ import com.elon33.model.HdfsDAO;
 
 /**
  * Servlet implementation class UploadServlet
+ * 
+ * 文件上传处理控制器
  */
 public class UploadServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -42,6 +51,7 @@ public class UploadServlet extends HttpServlet {
 		File file;
 		int maxFileSize = 50 * 1024 * 1024; // 50M
 		int maxMemSize = 50 * 1024 * 1024; // 50M
+		HttpSession session = request.getSession();
 		ServletContext context = getServletContext();
 		String filePath = context.getInitParameter("file-upload");
 		System.out.println("source file path:" + filePath + "");
@@ -59,6 +69,7 @@ public class UploadServlet extends HttpServlet {
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			// 设置最大上传的文件大小
 			upload.setSizeMax(maxFileSize);
+
 			try {
 				// 解析获取的文件
 				List fileItems = upload.parseRequest(request);
@@ -66,7 +77,7 @@ public class UploadServlet extends HttpServlet {
 				// 处理上传的文件
 				Iterator i = fileItems.iterator();
 
-				System.out.println("begin to upload file to tomcat server</p>");
+				System.out.println("***begin to upload file to tomcat server...***");
 				while (i.hasNext()) {
 					FileItem fi = (FileItem) i.next();
 					if (!fi.isFormField()) {
@@ -80,27 +91,30 @@ public class UploadServlet extends HttpServlet {
 						long sizeInBytes = fi.getSize();
 						// 写入文件
 						if (fileName.lastIndexOf("\\") >= 0) {
+							System.out.println(filePath);
+							System.out.println("==========");
+							System.out.println(fileName.substring(fileName.lastIndexOf("\\")));
 							file = new File(filePath, fileName.substring(fileName.lastIndexOf("\\")));
-							// out.println("filename"+fileName.substring(
-							// fileName.lastIndexOf("\\"))+"||||||");
 						} else {
 							file = new File(filePath, fileName.substring(fileName.lastIndexOf("\\") + 1));
 						}
 						fi.write(file);
 						System.out.println("upload file to tomcat server success!");
 
-						System.out.println("begin to upload file to hadoop hdfs</p>");
+						System.out.println("***begin to upload file to hadoop hdfs...***");
+
 						// 将tomcat上的文件上传到hadoop上
-						String username = (String) request.getSession().getAttribute("username");
+						String username = (String) session.getAttribute("username");
+						String currentPath = (String) session.getAttribute("currentPath");
 						JobConf conf = HdfsDAO.config();
 						HdfsDAO hdfs = new HdfsDAO(conf);
-						hdfs.copyFile(filePath + "\\" + fn, "/" + username + "/" + fn);
+						hdfs.copyFile(filePath + "\\" + fn, currentPath + "/" + fn);
 						System.out.println("upload file to hadoop hdfs success!");
 
-						System.out.println("username-----" + username);
-						FileStatus[] list = hdfs.ls("/" + username);
-						request.setAttribute("list", list);
-						request.getRequestDispatcher("index.jsp").forward(request, response);
+						// System.out.println("username-----" + username);
+				        FileStatus[] list = hdfs.ls(currentPath);
+				        request.setAttribute("list",list);
+						request.getRequestDispatcher("index.jsp").forward(request,response);
 
 					}
 				}
@@ -108,7 +122,7 @@ public class UploadServlet extends HttpServlet {
 				System.out.println(ex);
 			}
 		} else {
-			System.out.println("<p>No file uploaded</p>");
+			System.out.println("***No file uploaded!***");
 
 		}
 

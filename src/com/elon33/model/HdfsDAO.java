@@ -9,10 +9,20 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapred.JobConf;
 
+/**
+ * Hadoop-hdfs文件操作模型
+ * 
+ * @author elon@elon33.com
+ *
+ */
 public class HdfsDAO {
 
 	// HDFS访问地址
 	private static final String HDFS = "hdfs://192.168.1.101:9000";
+	// hdfs路径
+	private String hdfsPath;
+	// Hadoop系统配置
+	private Configuration conf;
 
 	public HdfsDAO(Configuration conf) {
 		this(HDFS, conf);
@@ -23,10 +33,9 @@ public class HdfsDAO {
 		this.conf = conf;
 	}
 
-	// hdfs路径
-	private String hdfsPath;
-	// Hadoop系统配置
-	private Configuration conf;
+	public static String getHdfs() {
+		return HDFS;
+	}
 
 	// 启动函数
 	public static void main(String[] args) throws IOException {
@@ -35,8 +44,8 @@ public class HdfsDAO {
 
 		try {
 			System.out.println(conf.get("fs.defaultFS"));
-			// hdfs.mkdirs("/Tom");
-			 hdfs.copyFile("c:/mr.jar", "/aa/bb/1234");
+			hdfs.mkdirs("/Tom1/tom1/ttt");
+			// hdfs.copyFile("c:/mr.jar", "/aa/bb/1234");
 			// hdfs.ls("/");
 			// hdfs.rmr("/wgc/files");
 			// hdfs.download("/jdk.exe", "f:/");
@@ -89,6 +98,7 @@ public class HdfsDAO {
 		return list;
 	}
 
+	// 将文件上传到hdfs
 	public void copyFile(String local, String remote) throws IOException {
 		FileSystem fs = FileSystem.get(URI.create(hdfsPath), conf);
 		// remote---/用户/用户下的文件或文件夹
