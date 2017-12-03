@@ -3,9 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.elon33.model.HdfsDAO"%>
 <%@page import="org.apache.hadoop.fs.FileStatus"%>
-<head>
-<title>HDFS网盘系统</title>
-</head>
 <%
 	String username = (String) session.getAttribute("username");
 	String path = (String) session.getAttribute("currentPath"); // path=hdfs://192.168.1.101:9000/elon/集合常考点.png
@@ -15,7 +12,7 @@
 <body style="text-align: center; margin-bottom: 100px;">
 	<div class="navbar">
 		<div class="navbar-inner">
-			<a href="IndexPageServlet" class="brand" href="#" style="margin-left: 200px;">HDFS网盘</a>
+			<a href="IndexPageServlet" class="brand" href="#" style="margin-left: 100px;">HDFS网盘</a>
 			<ul class="nav">
 				<li><a href="IndexPageServlet">首页</a></li>
 				<%if(!path.substring(path.lastIndexOf("/")+1).equals(username)){ %>

@@ -14,7 +14,7 @@
 <body style="text-align: center; margin-bottom: 100px;">
 	<div class="navbar">
 		<div class="navbar-inner">
-			<a href="IndexPageServlet" class="brand" href="#" style="margin-left: 200px;">HDFS网盘</a>
+			<a href="IndexPageServlet" class="brand" href="#" style="margin-left: 100px;">HDFS网盘</a>
 			<ul class="nav">
 				<li><a href="IndexPageServlet">首页</a></li>
 				<%if(!path.substring(path.lastIndexOf("/")+1).equals(username)){ %>

@@ -13,8 +13,7 @@ import org.apache.hadoop.mapred.JobConf;
 import com.elon33.model.HdfsDAO;
 
 /**
- * Servlet implementation class PrevdirServlet
- * 上一级目录跳转处理
+ * Servlet implementation class PrevdirServlet 上一级目录跳转处理
  */
 public class PrevdirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -44,7 +43,7 @@ public class PrevdirServlet extends HttpServlet {
 		String currentPath = (String) session.getAttribute("currentPath");
 		System.out.println(currentPath);
 		PrevDirPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
-		System.out.println("%%%%%%%%%%%%" + PrevDirPath + "%%%%%%%%%%%%");
+		// System.out.println("%%%%%%%%%%%%" + PrevDirPath + "%%%%%%%%%%%%");
 		JobConf conf = HdfsDAO.config();
 		HdfsDAO hdfs = new HdfsDAO(conf);
 		FileStatus[] list = hdfs.ls(PrevDirPath);
