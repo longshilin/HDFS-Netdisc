@@ -42,8 +42,10 @@ public class PrevdirServlet extends HttpServlet {
 		String PrevDirPath = "";
 		String currentPath = (String) session.getAttribute("currentPath");
 		System.out.println(currentPath);
+		 System.out.println("%%%%%%%%%%%%" + currentPath + "%%%%%%%%%%%%");
 		PrevDirPath = currentPath.substring(0, currentPath.lastIndexOf("/"));
-		// System.out.println("%%%%%%%%%%%%" + PrevDirPath + "%%%%%%%%%%%%");
+		 System.out.println("%%%%%%%%%%%%" + PrevDirPath + "%%%%%%%%%%%%");
+		session.setAttribute("currentPath", PrevDirPath);
 		JobConf conf = HdfsDAO.config();
 		HdfsDAO hdfs = new HdfsDAO(conf);
 		FileStatus[] list = hdfs.ls(PrevDirPath);

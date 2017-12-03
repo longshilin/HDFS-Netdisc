@@ -24,9 +24,13 @@
 			</ul>
 		</div>
 	</div>
-
-	<div
-		style="margin: 0px auto; text-align: left; width: 1200px; height: 40px;">
+<!-- 
+	<div id="myAlert" class="alert alert-success">
+	<a href="#" class="close" data-dismiss="alert">&times;</a>
+	<strong>成功！</strong>结果是成功的。
+	</div>
+ -->
+	<div style="margin: 0px auto; text-align: left; width: 1200px; height: 40px;">
 		<div style="float: left;">
 			<form class="form-inline" method="POST" enctype="MULTIPART/FORM-DATA"
 				action="UploadServlet">
@@ -51,8 +55,7 @@
 		</div>
 	</div>
 
-	<div
-		style="margin: 0px auto; width: 1200px; height: 500px; background: #fff">
+	<div style="margin: 0px auto; width: 1200px; height:auto; min-height:440px; background: #fff; ">
 		<table class="table table-hover"
 			style="width: 1000px; margin-left: 100px;">
 			<tr style="border-bottom: 2px solid #ddd">
@@ -94,6 +97,17 @@
 				} */
 			%>
 		</table>
+		
 	</div>
-</body>
+	
+<!-- 	
+<script type="text/javascript">
+	$(function(){
+		$(".close").click(function(){
+			$(".alert").alert('close');
+		});
+	});  
+</script>
+ -->
+ </body>
 </html>

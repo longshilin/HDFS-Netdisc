@@ -35,7 +35,7 @@
 				&nbsp;
 				<div style="line-height: 50px; float: left;">
 					<input type="file" name="file1" size="30" />
-				</div>
+			    </div>
 			</form>
 		</div>
 		<div style="float: right;">
@@ -50,13 +50,8 @@
 		</div>
 	</div>
 
-	<div
-		style="margin: 0px auto; width: 1200px; height: 500px; background: #fff">
 
-
-
-
-
+	<div style="margin: 0px auto; width: 1200px; height:auto; min-height:440px; background: #fff; ">
 		<table class="table table-hover"
 			style="width: 1000px; margin-left: 100px;">
 			<tr style="border-bottom: 2px solid #ddd">
@@ -100,7 +95,7 @@
 			%>
 		</table>
 
-
+	</div>
 
 	</div>
 
