@@ -4,14 +4,24 @@ HDFS网盘，用户注册登录后可以将数据文件保存到云端的一种�
 ## 版本
 `version 1.0`
 
-## 环境
-Hadoop分布式环境	
-	
-## 主要技术
+## 搭建环境
+- [Hadoop分布式环境](http://blog.csdn.net/Coder__CS/article/category/7254744)	
+- Apache Tomcat v7.0
+- MySql
+
+## lib库
+- Hadoop基础开发jar包(可在Hadoop源码lib中获取)
+- commons-fileupload-1.3.jar
+- commons-io-2.4.jar
+- mysql-connector-java-5.1.32-bin.jar
+
+## 涉及技术
 - HDFS-API的运用
 - JSP+Servlet
 - Bootstrap框架渲染
 - 系统B/S结构
+- JDBC编程
+- 用户登陆
 - MVC开发模式
 	
 ## 实现功能
