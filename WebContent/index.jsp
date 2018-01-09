@@ -30,11 +30,11 @@
 			<form class="form-inline" method="POST" enctype="MULTIPART/FORM-DATA"
 				action="UploadServlet">
 				<div style="line-height: 50px; float: left;">
-					<input type="submit" name="submit" value="上传文件" />
+					<input type="submit" name="submit" id="btn" value="上传文件" onsubmit="return false"/>
 				</div>
 				&nbsp;
 				<div style="line-height: 50px; float: left;">
-					<input type="file" name="file1" size="30" />
+					<input type="file" id="file1" name="file1" size="30" />
 			    </div>
 			</form>
 		</div>
@@ -98,5 +98,15 @@
 	</div>
 
 	</div>
-
+<script type="text/javascript">
+	document.getElementById("btn").onclick=function(){
+		if(document.getElementById("file1").value==""){
+			alert("请选择上传文件");
+			document.getElementById("btn").disabled = true;
+		}
+		document.getElementById("file1").onclick=function(){
+			document.getElementById("btn").disabled = false;
+		}
+	}
+</script>
 </body>
