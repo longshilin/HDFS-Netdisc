@@ -9,8 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+    <param-name>file-upload</param-name>
+    <param-value>F:\apache-tomcat-8.0.48\datas</param-value>
+  </context-param>
+  
   <servlet>
-    <description></description>
     <display-name>UploadServlet</display-name>
     <servlet-name>UploadServlet</servlet-name>
     <servlet-class>com.elon33.controller.UploadServlet</servlet-class>
@@ -19,13 +24,8 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/UploadServlet</url-pattern>
   </servlet-mapping>
-  <context-param>
-    <description>Location to store uploaded file</description>
-    <param-name>file-upload</param-name>
-    <param-value>F:\apache-tomcat-7.0.63\datas</param-value>
-  </context-param>
+  
   <servlet>
-    <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.elon33.controller.LoginServlet</servlet-class>
@@ -35,7 +35,6 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
     <display-name>DeleteFileServlet</display-name>
     <servlet-name>DeleteFileServlet</servlet-name>
     <servlet-class>com.elon33.controller.DeleteFileServlet</servlet-class>
@@ -44,8 +43,8 @@
     <servlet-name>DeleteFileServlet</servlet-name>
     <url-pattern>/DeleteFileServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>DownloadServlet</display-name>
     <servlet-name>DownloadServlet</servlet-name>
     <servlet-class>com.elon33.controller.DownloadServlet</servlet-class>
@@ -54,8 +53,8 @@
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/DownloadServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>DocumentServlet</display-name>
     <servlet-name>DocumentServlet</servlet-name>
     <servlet-class>com.elon33.controller.DocumentServlet</servlet-class>
@@ -64,8 +63,8 @@
     <servlet-name>DocumentServlet</servlet-name>
     <url-pattern>/DocumentServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>LogoutServlet</display-name>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.elon33.controller.LogoutServlet</servlet-class>
@@ -74,8 +73,8 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>IndexPageServlet</display-name>
     <servlet-name>IndexPageServlet</servlet-name>
     <servlet-class>com.elon33.controller.IndexPageServlet</servlet-class>
@@ -84,8 +83,8 @@
     <servlet-name>IndexPageServlet</servlet-name>
     <url-pattern>/IndexPageServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>MkdirServlet</display-name>
     <servlet-name>MkdirServlet</servlet-name>
     <servlet-class>com.elon33.controller.MkdirServlet</servlet-class>
@@ -94,8 +93,8 @@
     <servlet-name>MkdirServlet</servlet-name>
     <url-pattern>/MkdirServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <description></description>
     <display-name>PrevdirServlet</display-name>
     <servlet-name>PrevdirServlet</servlet-name>
     <servlet-class>com.elon33.controller.PrevdirServlet</servlet-class>
