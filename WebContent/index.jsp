@@ -1,8 +1,8 @@
 <%@ include file="head.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.elon33.model.HdfsDAO"%>
-<%@page import="org.apache.hadoop.fs.FileStatus"%>
+<%@ page import="com.elon33.netdisc.model.HdfsDAO"%>
+<%@ page import="org.apache.hadoop.fs.FileStatus"%>
 <%
 	String username = (String) session.getAttribute("username");
 	String path = (String) session.getAttribute("currentPath"); // path=hdfs://192.168.1.101:9000/elon/集合常考点.png
