@@ -117,18 +117,31 @@ public class HdfsDAO {
 		fs.close();
 	}
 
-	// 下载文件到本地系统
-	public void download(String remote, String local) throws IOException {
-		Path path = new Path(remote);
-		FileSystem fs = FileSystem.get(URI.create(hdfsPath), conf);
-		File localFile = new File(local);
-		if(localFile.exists()){
-			deleteFile(localFile);
-		}
-		fs.copyToLocalFile(path, new Path(local));
-		System.out.println("download: from " + remote + " to " + local);
-		fs.close();
-	}
+    // 下载文件到本地系统
+    public void download(String remote, String local) throws IOException {
+        File localDirPath = new File(local);
+        // 检测本地是否存在与文件夹同名的目标文件，若存在，先删除。
+        if (!localDirPath.isDirectory()) {
+            localDirPath.delete();
+            localDirPath.mkdir();
+        }
+
+        FileSystem fs = FileSystem.get(URI.create(hdfsPath), conf);
+        // 获取到待下载文件的文件名
+        String[] fileNameList = remote.split("/");
+        String fileName = fileNameList[fileNameList.length - 1];
+
+        File localFile = new File(local + "/" + fileName);
+
+        //检测文件夹中是否存在于目标文件同名的文件，若存在，先删除
+        if (localFile.exists()) {
+            deleteFile(localFile);
+        }
+
+        fs.copyToLocalFile(new Path(remote), new Path(local + "/" + fileName));
+        System.out.println("download: from " + remote + " to " + localFile.getPath());
+        fs.close();
+    }
 
 	// 递归删除指定目录及目录下的文件
 	private void deleteFile(File file){
