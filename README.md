@@ -43,6 +43,6 @@ HDFS网盘，用户注册登录后可以将数据文件保存到云端的一种�
 
 ![主页2](https://i.imgur.com/mAMWacg.png)
 
-# 非正式发行版本下载
+# 正式发行版本下载
 [releases v1.0](https://github.com/yilong0722/HDFS-Netdisc/releases/tag/v1.0)
 
