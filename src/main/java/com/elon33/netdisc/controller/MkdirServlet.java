@@ -17,33 +17,34 @@ import com.elon33.netdisc.model.HdfsDAO;
  * 创建文件夹的控制器
  */
 public class MkdirServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String username = (String)session.getAttribute("username");
-		String path1 = (String)session.getAttribute("currentPath");
-		String path2 = (String)request.getParameter("dir");
-		
-		//调用hdfs的mkdir方法创建目录
-		JobConf conf = HdfsDAO.config();
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        String path1 = (String) session.getAttribute("currentPath");
+        String path2 = (String) request.getParameter("dir");
+
+        //调用hdfs的mkdir方法创建目录
+        JobConf conf = HdfsDAO.config();
         HdfsDAO hdfs = new HdfsDAO(conf);
-        hdfs.mkdirs(path1+"/"+path2);
-        
+        String folder = path1 + "/" + path2;
+        hdfs.mkdirs(folder);
+
         FileStatus[] list = hdfs.ls(path1);
-		request.setAttribute("list",list);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-	}
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
 
 }
