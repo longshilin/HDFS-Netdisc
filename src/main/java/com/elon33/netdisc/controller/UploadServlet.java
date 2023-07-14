@@ -22,18 +22,16 @@ import com.elon33.netdisc.model.HdfsDAO;
 
 /**
  * Servlet implementation class UploadServlet
- * <p>
  * 文件上传处理控制器
  */
 public class UploadServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final int maxFileSize = 50 * 1024 * 1024; // 50M
-    private static final int maxMemSize = 50 * 1024 * 1024; // 50M
+    private static final int maxFileSize = 50 * 1024 * 1024; // 50M 最大文件大小
+    private static final int maxMemSize = 50 * 1024 * 1024; // 50M 最大内存大小
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     * response)
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,8 +39,7 @@ public class UploadServlet extends HttpServlet {
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     * response)
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

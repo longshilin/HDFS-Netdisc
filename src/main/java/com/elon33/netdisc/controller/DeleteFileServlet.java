@@ -24,9 +24,7 @@ public class DeleteFileServlet extends HttpServlet {
      *
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         // 获取当前用户的用户名
         String username = (String) session.getAttribute("username");

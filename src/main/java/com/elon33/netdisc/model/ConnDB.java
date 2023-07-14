@@ -21,7 +21,8 @@ public class ConnDB {
             // 加载驱动
             Class.forName("com.mysql.jdbc.Driver");
             // 得到连接
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hadoop?user=root&password=123456");
+            String url = "jdbc:mysql://localhost:3306/hadoop?user=root&password=123456";
+            con = DriverManager.getConnection(url);
         } catch (Exception e) {
             e.printStackTrace();
         }
