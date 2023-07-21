@@ -19,7 +19,6 @@ import com.elon33.netdisc.model.HdfsDAO;
 public class MkdirServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
