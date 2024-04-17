@@ -45,10 +45,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("username", username);
             String path = HdfsDAO.getHdfs() + "/" + username;
             session.setAttribute("currentPath", path);
+
             JobConf conf = HdfsDAO.config();
             HdfsDAO hdfs = new HdfsDAO(conf);
             String folder = "/" + username;
             FileStatus[] list = hdfs.ls(folder);
+
             request.setAttribute("list", list);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
