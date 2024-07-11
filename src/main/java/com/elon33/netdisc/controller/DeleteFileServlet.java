@@ -37,7 +37,7 @@ public class DeleteFileServlet extends HttpServlet {
         HdfsDAO hdfs = new HdfsDAO(conf);
         // 删除指定的文件或目录
         hdfs.rmr(filePath);
-        // System.out.println("===="+filePath+"====");
+        System.out.println("===="+filePath+"====");
         // FileStatus[] list = hdfs.ls("/user/root/");
         String currentPath = (String) session.getAttribute("currentPath");
         // 获取当前路径下的文件列表

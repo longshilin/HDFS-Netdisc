@@ -44,6 +44,8 @@ public class IndexPageServlet extends HttpServlet {
 		HdfsDAO hdfs = new HdfsDAO(conf);
 		FileStatus[] list = hdfs.ls((String)session.getAttribute("currentPath"));
 		// FileStatus[] list = hdfs.ls("/"+"elon");
+		System.out.println("===="+list.length+"====");
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
