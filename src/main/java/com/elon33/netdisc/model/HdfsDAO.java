@@ -79,7 +79,7 @@ public class HdfsDAO {
         Path path = new Path(folder);
         if (!fs.exists(path)) {
             fs.mkdirs(path);
-            System.out.println("Create: " + folder);
+            System.out.println("=== Create: " + folder);
         }
         fs.close();
     }
@@ -94,7 +94,7 @@ public class HdfsDAO {
             for (FileStatus f : list) {
                 // System.out.printf("name: %s, folder: %s, size: %d\n",
                 // f.getPath(), f.isDir(), f.getLen());
-                System.out.printf("%s, folder: %s, 大小: %dK\n", f.getPath().getName(), (f.isDirectory() ? "目录" : "文件"),
+                System.out.printf("=== %s, folder: %s, 大小: %dK\n", f.getPath().getName(), (f.isDirectory() ? "目录" : "文件"),
                         f.getLen() / 1024);
             }
         System.out.println("==========================================================");
@@ -107,7 +107,7 @@ public class HdfsDAO {
     public void copyFile(String local, String remote) throws IOException {
         // remote---/用户/用户下的文件或文件夹
         fs.copyFromLocalFile(new Path(local), new Path(remote));
-        System.out.println("copy from: " + local + " to " + remote);
+        System.out.println("=== copy from: " + local + " to " + remote);
         fs.close();
     }
 
@@ -115,7 +115,7 @@ public class HdfsDAO {
     public void rmr(String folder) throws IOException {
         Path path = new Path(folder);
         fs.deleteOnExit(path);
-        System.out.println("Delete: " + folder);
+        System.out.println("=== Delete: " + folder);
         fs.close();
     }
 

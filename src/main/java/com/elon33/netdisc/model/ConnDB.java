@@ -26,8 +26,10 @@ public class ConnDB {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // if (con != null)
-        // System.out.println("******数据库连接成功！*******");
+
+        if (con != null){
+            System.out.println("******数据库连接成功！*******");
+        }
         return con;
     }
 }
