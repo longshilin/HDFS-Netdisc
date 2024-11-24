@@ -11,6 +11,7 @@
     String path1 = path.substring(path.indexOf(username) - 1); //  /elon...
     //System.out.println(path.substring(path.lastIndexOf("/")+1));
 %>
+
 <body style="text-align: center; margin-bottom: 100px;">
 <div class="navbar">
     <div class="navbar-inner">
@@ -30,6 +31,7 @@
 	<strong>成功！</strong>结果是成功的。
 	</div>
  -->
+
 <div style="margin: 0px auto; text-align: left; width: 1200px; height: 40px;">
     <div style="float: left;">
         <form class="form-inline" method="POST" enctype="MULTIPART/FORM-DATA"
@@ -55,6 +57,7 @@
         </form>
     </div>
 </div>
+
 
 <div style="margin: 0px auto; width: 1200px; height:auto; min-height:440px; background: #fff; ">
     <table class="table table-hover"

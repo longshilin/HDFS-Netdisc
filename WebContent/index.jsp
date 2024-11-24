@@ -51,7 +51,6 @@
     </div>
 </div>
 
-
 <div style="margin: 0px auto; width: 1200px; height:auto; min-height:440px; background: #fff; ">
     <table class="table table-hover"
            style="width: 1000px; margin-left: 100px;">
@@ -97,7 +96,6 @@
 				} */
         %>
     </table>
-
 </div>
 
 </div>
