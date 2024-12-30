@@ -27,9 +27,9 @@ public class ConnDB {
             e.printStackTrace();
         }
 
-        if (con != null){
-            System.out.println("******数据库连接成功！*******");
-        }
+//        if (con != null){
+//            System.out.println("******数据库连接成功！*******");
+//        }
         return con;
     }
 }

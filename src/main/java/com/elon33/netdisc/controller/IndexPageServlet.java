@@ -35,16 +35,18 @@ public class IndexPageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
+
 		// session有效性检测
 		if (session.getAttribute("username") == null) {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
+
 		session.setAttribute("currentPath", HdfsDAO.getHdfs()+"/"+username);
 		JobConf conf = HdfsDAO.config();
 		HdfsDAO hdfs = new HdfsDAO(conf);
 		FileStatus[] list = hdfs.ls((String)session.getAttribute("currentPath"));
 		// FileStatus[] list = hdfs.ls("/"+"elon");
-		System.out.println("===="+list.length+"====");
+//		System.out.println("===="+list.length+"====");
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("index.jsp").forward(request, response);

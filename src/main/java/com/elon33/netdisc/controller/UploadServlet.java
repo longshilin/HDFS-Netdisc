@@ -106,7 +106,7 @@ public class UploadServlet extends HttpServlet {
                         hdfs.copyFile(filePath + "\\" + fn, currentPath + "/" + fn);
                         System.out.println("upload file to hadoop hdfs success!");
 
-                        // System.out.println("username-----" + username);
+                         System.out.println("username-----" + username);
                         FileStatus[] list = hdfs.ls(currentPath);
                         request.setAttribute("list", list);
                         request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -118,9 +118,6 @@ public class UploadServlet extends HttpServlet {
             }
         } else {
             System.out.println("***No file uploaded!***");
-
         }
-
     }
-
 }

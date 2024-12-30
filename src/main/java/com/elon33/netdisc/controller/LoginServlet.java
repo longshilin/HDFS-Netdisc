@@ -35,10 +35,12 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // user+password
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
         UserBeanCl ubc = new UserBeanCl();
+
+        // check user
         if (ubc.checkUser(username, password)) {
             //用户合法，跳转到界面
             HttpSession session = request.getSession();
@@ -53,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 
             request.setAttribute("list", list);
             request.getRequestDispatcher("index.jsp").forward(request, response);
+
         } else {
             //用户不合法，调回登录界面，并提示错误信息
             request.getRequestDispatcher("login.jsp").forward(request, response);
