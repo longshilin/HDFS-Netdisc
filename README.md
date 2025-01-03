@@ -48,7 +48,7 @@ HDFS网盘，用户注册登录后可以将数据文件保存到云端的一种�
 
 ---
 
-本项目由[JetBranins](https://www.jetbrains.com/?from=HDFS-Netdisc)赞助相关开发工具  
+本项目由[JetBranins](https://www.jetbrains.com/?from=HDFS-Netdisc)赞助相关开发工具, 感谢支持！
 <a href="https://www.jetbrains.com/?from=HDFS-Netdisc"><img src="https://github.com/XINCGer/Unity3DTraining/blob/master/Doc/images/jetbrains.png" width = "150" height = "150" div align=center /></a>
 
 

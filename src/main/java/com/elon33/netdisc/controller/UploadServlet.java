@@ -27,8 +27,8 @@ import com.elon33.netdisc.model.HdfsDAO;
 public class UploadServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final int maxFileSize = 50 * 1024 * 1024; // 50M 最大文件大小
-    private static final int maxMemSize = 50 * 1024 * 1024; // 50M 最大内存大小
+    private static final int MAX_FILE_SIZE = 50 * 1024 * 1024; // 50M 最大文件大小
+    private static final int MAX_MEM_SIZE = 50 * 1024 * 1024; // 50M 最大内存大小
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,14 +56,14 @@ public class UploadServlet extends HttpServlet {
 
             DiskFileItemFactory factory = new DiskFileItemFactory();
             // 设置内存中存储文件的最大值
-            factory.setSizeThreshold(maxMemSize);
+            factory.setSizeThreshold(MAX_MEM_SIZE);
             // 本地存储的数据大于 maxMemSize.
             factory.setRepository(new File("c:\\temp"));
 
             // 创建一个新的文件上传处理程序
             ServletFileUpload upload = new ServletFileUpload(factory);
             // 设置最大上传的文件大小
-            upload.setSizeMax(maxFileSize);
+            upload.setSizeMax(MAX_FILE_SIZE);
 
             try {
                 // 解析获取的文件
@@ -84,10 +84,10 @@ public class UploadServlet extends HttpServlet {
                         System.out.println("<br>" + fn + "<br>");
                         boolean isInMemory = fi.isInMemory();
                         long sizeInBytes = fi.getSize();
+
                         // 写入文件
                         if (fileName.lastIndexOf("\\") >= 0) {
                             System.out.println(filePath);
-                            System.out.println("==========");
                             System.out.println(fileName.substring(fileName.lastIndexOf("\\")));
                             file = new File(filePath, fileName.substring(fileName.lastIndexOf("\\")));
                         } else {
@@ -106,7 +106,6 @@ public class UploadServlet extends HttpServlet {
                         hdfs.copyFile(filePath + "\\" + fn, currentPath + "/" + fn);
                         System.out.println("upload file to hadoop hdfs success!");
 
-                         System.out.println("username-----" + username);
                         FileStatus[] list = hdfs.ls(currentPath);
                         request.setAttribute("list", list);
                         request.getRequestDispatcher("index.jsp").forward(request, response);
